@@ -1,0 +1,64 @@
+SERVICE SCHEDULER – HOW TO RUN
+
+INPUT FOLDER:
+  data\input\
+
+REQUIRED FILES (EXACT NAMES):
+
+1) job_data.xlsx
+   - Export from ServicePro for jobs completed in the last 12 months
+   - Must include the column: "Site Postal Code" (full site postcodes)
+
+2) engineers.xlsx
+   - Engineer list showing where each engineer lives
+   - Must include at least:
+     - "First Name"
+     - "Last Name"
+     - "Post Code"
+
+3) postcode-outcodes.csv
+   - UK postcode data with coordinates
+   - Must include columns:
+     - "postcode"
+     - "latitude"
+     - "longitude"
+
+4) SERVICE_SCHEDULE_MASTER.xlsx
+   - Service schedule master (Hayley’s file)
+   - Defines which months each postcode area is visited (6-month rules)
+   - Must include:
+     - "Postcode"
+     - Month columns: Jan, Feb, ..., Dec
+
+HOW TO RUN:
+
+1) Make sure the 4 files above are saved in:
+     data\input\
+
+2) Double-click:
+     run_scheduler.bat
+
+3) Wait until the window says "Finished".
+
+OUTPUT FOLDER:
+  data\output\
+
+KEY OUTPUT FILES:
+
+1) SERVICE_SCHEDULE_UPDATED.xlsx
+   - Updated postcode service schedule
+   - Same layout as Hayley’s sheet (Jan–Dec)
+   - Month counts are based on actual job data and engineer capacity
+
+2) engineer_assignments_preview.xlsx
+   - For each postal area & month:
+     - Which engineer is planned
+     - How many jobs
+     - Whether it is a spillover or over-cap
+
+3) engineer_monthly_summary.xlsx
+   - One row per engineer per month:
+     - Total jobs
+     - Monthly capacity (45)
+     - Utilisation %
+     - Status: Under cap / At cap / Over cap
